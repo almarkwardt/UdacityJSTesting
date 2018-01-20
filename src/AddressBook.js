@@ -1,5 +1,17 @@
 var AddressBook = function() {
 	this.contacts = [];
+	this.initialComplete = false;
+};
+
+AddressBook.prototype.GetInitialContacts = function(completeCallback) {
+	var self = this; // Set up a variable to allow accessing "this" from function.
+
+	setTimeout(function() {
+		self.initialComplete = true;
+		if(completeCallback) {
+			return completeCallback();
+		}
+	}, 3);
 };
 
 AddressBook.prototype.AddContact = function(contact) {

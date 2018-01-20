@@ -20,3 +20,18 @@ describe("Address Book", function() {
 		expect(addressBook.GetContact(0)).not.toBeDefined();
 	});
 });
+
+describe("Async Address Book", function() {
+	var addressBook = new AddressBook();
+
+	beforeEach(function(done) {
+		addressBook.GetInitialContacts(function() {
+			done();
+		});
+	});
+
+	it("should grab initial contacts", function(done) {
+		expect(addressBook.initialComplete).toBe(true);
+		done();
+	});
+});
